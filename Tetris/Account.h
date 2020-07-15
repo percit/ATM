@@ -18,6 +18,8 @@ public:
 	int get_account_nr();
 	void set_PIN(std::string);
 	int get_PIN();
+	void set_name(std::string);
+	std::string get_name();
 	void withdraw(int);
 
 

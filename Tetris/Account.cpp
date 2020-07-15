@@ -13,6 +13,9 @@ void Account::set_PIN(std::string new_PIN) {
 	int temp = atof(new_PIN.c_str());
 	PIN = temp;
 }
+void Account::set_name(std::string new_name) {
+	name = new_name;
+}
 int Account::get_account_nr() {
 	return account_nr;
 }
@@ -21,6 +24,9 @@ int Account::get_balance() {
 }
 int Account::get_PIN() {
 	return PIN;
+}
+std::string Account::get_name() {
+	return name;
 }
 void Account::withdraw(int amount) {
 	bank_balance =- amount;
