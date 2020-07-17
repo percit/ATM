@@ -32,3 +32,8 @@ void Account::withdraw(int amount) {
 	bank_balance =- amount;
 }
 
+std::ostream& operator<<(std::ostream stream, const Account& a) {
+	stream << a.account_nr << ", " << a.PIN << ", " << a.bank_balance << ", " << a.name << std::endl;
+	return stream;
+}
+

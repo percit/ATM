@@ -21,7 +21,7 @@ public:
 	void set_name(std::string);
 	std::string get_name();
 	void withdraw(int);
-
+	friend std::ostream& operator<<(std::ostream stream, const Account&);
 
 
 };

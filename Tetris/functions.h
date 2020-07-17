@@ -1,7 +1,8 @@
 #pragma once
 #include<optional>
 #include<string>
-#include<vector>
-#include "Account.h"
+#include <vector>
+#include"Account.h"
 
-void read_file(const std::string& filepath, std::vector<Account*>&);
+void read_file(const std::string&, std::vector<Account*>&);
+std::ostream& operator<<(std::ostream&, const std::vector<Account*>&);
