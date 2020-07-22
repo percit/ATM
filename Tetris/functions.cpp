@@ -3,24 +3,25 @@
 #include<fstream>
 
 
-void read_file(const std::string& filepath, std::vector<Account*>& Vector) {	
-	Account temp;
+void read_file(const std::string& filepath, std::vector< Account*>& Vector) {	
+	Account* temp;
+	temp = new Account;
 	std::ifstream stream(filepath);
 	std::string buffer;
-	std::vector<Account> base;
-	base.reserve(10);
+	//std::vector<Account> base;
+	//base.reserve(10);
 	int ilosc_linii = 0;
 	while (true) {
 		if (getline(stream, buffer))
 		{
-			temp.set_account_nr(buffer);	//looks ugly, think of sth better
+			temp->set_account_nr(buffer);	//looks ugly, think of sth better
 			getline(stream, buffer);
-			temp.set_PIN(buffer);
+			temp->set_PIN(buffer);
 			getline(stream, buffer);
-			temp.set_balance(buffer);
+			temp->set_balance(buffer);
 			getline(stream, buffer);
-			temp.set_name(buffer);
-			base.emplace_back(temp);
+			temp->set_name(buffer);
+			Vector.emplace_back(temp);
 			std::cout << ilosc_linii << ' ';
 			ilosc_linii++;
 		}
@@ -30,6 +31,7 @@ void read_file(const std::string& filepath, std::vector<Account*>& Vector) {
 
 	}
 	stream.close();
+	delete temp;
 }
 
 std::ostream& operator<<(std::ostream& os, const std::vector<Account*>& v)
