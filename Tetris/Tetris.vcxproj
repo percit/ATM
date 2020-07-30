@@ -154,12 +154,10 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="functions.h" />
-    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="lista.txt" />
