@@ -21,7 +21,8 @@ void read_file(const std::string& filepath, std::vector< Account*>& Vector) {
 			temp->set_balance(buffer);
 			getline(stream, buffer);
 			temp->set_name(buffer);
-			Vector.emplace_back(temp);
+			Vector.emplace_back(temp);		//jak tutaj wrzucic obiekt, bo logike juz wczesniej 
+											//rozumielem, ale nie wiedzialem jak to napisac w kodzie
 			std::cout << ilosc_linii << ' ';
 			ilosc_linii++;
 		}
@@ -38,7 +39,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<Account*>& v)
 {
 	os << "[";
 	for (int i = 0; i < v.size(); ++i) {
-		os << v[i];
+		os << v[i]->get_account_nr() << ' ' << v[i]->get_balance();	//tutaj mam wrzucic te *(v[i])? wywala blad jak to zrobie
 		if (i != v.size() - 1)
 			os << std::endl;
 	}

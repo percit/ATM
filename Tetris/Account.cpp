@@ -6,7 +6,7 @@ void Account::set_account_nr(std::string new_account_nr) {
 	bank_balance = temp;
 }
 void Account::set_balance(std::string new_balance) {
-	int temp = atof(new_balance.c_str());
+	int temp = std::stoi(new_balance);
 	bank_balance = temp;
 }
 void Account::set_PIN(std::string new_PIN) {
@@ -32,8 +32,8 @@ void Account::withdraw(int amount) {
 	bank_balance =- amount;
 }
 
-std::ostream& operator<<(std::ostream stream, const Account& a) {
-	stream << a.account_nr << ", " << a.PIN << ", " << a.bank_balance << ", " << a.name << std::endl;
+std::ostream& operator<<(std::ostream& stream, Account& a) {
+	stream << a.get_account_nr() << ", " << a.get_PIN() << ", " << a.get_balance() << ", " << a.get_name() << std::endl;
 	return stream;
 }
 

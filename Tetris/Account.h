@@ -4,7 +4,8 @@
 class Account {
 private:
 	std::string name;
-	int bank_balance = 0, PIN = 0, account_nr = 0;
+	int bank_balance = 0, PIN = 0;
+	long long int account_nr = 0;
 public:
 	Account() : name("John Smith"),account_nr(1111111111111111), PIN(1111), bank_balance(500) {
 		std::cout << "constructor" << std::endl;
