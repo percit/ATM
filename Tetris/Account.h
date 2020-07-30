@@ -14,15 +14,15 @@ public:
 		std::cout << "destructor" << std::endl;
 	};
 	void set_balance(std::string);
-	int get_balance();
+	long int get_balance();
 	void set_account_nr(std::string);
-	int get_account_nr();
+	long long int get_account_nr();
 	void set_PIN(std::string);
 	int get_PIN();
 	void set_name(std::string);
 	std::string get_name();
 	void withdraw(int);
-	friend std::ostream& operator<<(std::ostream stream, const Account&);
+	friend std::ostream& operator<<(std::ostream& stream, Account&);
 
 
 };

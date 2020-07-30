@@ -5,7 +5,7 @@
 #include "functions.h"
 
 int main() {
-	std::vector<Account*> base;
+	std::vector<Account> base;
 	read_file("lista.txt", base);
 	std::cout << base << std::endl;
 

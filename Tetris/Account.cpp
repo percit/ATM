@@ -1,13 +1,27 @@
 #include<stdlib.h>
+#include<stdexcept>
 #include "Account.h"
 
 void Account::set_account_nr(std::string new_account_nr) {
-	int temp = atof(new_account_nr.c_str());
-	bank_balance = temp;
+	long long int temp = 0;
+	try {
+		temp = std::stoll(new_account_nr);
+		account_nr = temp;
+	}
+	catch (const std::out_of_range& oor) {
+		std::cerr << "Out of Range error: " << oor.what() << ' ' << '\n';
+	}
 }
 void Account::set_balance(std::string new_balance) {
-	int temp = std::stoi(new_balance);
-	bank_balance = temp;
+	int temp = 0;
+	try {
+		temp = std::stol(new_balance);
+		bank_balance = temp;
+	}
+	catch (const std::invalid_argument& ia) {
+		std::cerr << "Invalid argument: " << ia.what() << ' '  << '\n';
+	}
+
 }
 void Account::set_PIN(std::string new_PIN) {
 	int temp = atof(new_PIN.c_str());
@@ -16,10 +30,10 @@ void Account::set_PIN(std::string new_PIN) {
 void Account::set_name(std::string new_name) {
 	name = new_name;
 }
-int Account::get_account_nr() {
+long long int Account::get_account_nr() {
 	return account_nr;
 }
-int Account::get_balance() {
+long int Account::get_balance() {
 	return bank_balance;
 }
 int Account::get_PIN() {
