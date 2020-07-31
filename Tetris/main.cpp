@@ -8,13 +8,7 @@
 int main() {
 	std::vector<Account> base;
 	read_file("lista.txt", base);
-	//input_data(base, AMOUNT);
 	menu(base, AMOUNT);
-	//std::cout << base << std::endl;
-
-
-
-
 
 	return 0;
 }

@@ -10,7 +10,7 @@ void read_file(const std::string& filepath, std::vector<Account>& Vector) {
 	while (true) {
 		if (getline(stream, buffer))
 		{
-			temp.set_account_nr(buffer);	//looks ugly, think of sth better
+			temp.set_account_nr(buffer);	
 			getline(stream, buffer);
 			temp.set_PIN(buffer);
 			getline(stream, buffer);
@@ -18,7 +18,6 @@ void read_file(const std::string& filepath, std::vector<Account>& Vector) {
 			getline(stream, buffer);
 			temp.set_name(buffer);
 			Vector.emplace_back(temp);										
-			//std::cout << "lines amount: "<< lines_amount << ' ';
 			lines_amount++;
 		}
 		else
@@ -47,7 +46,7 @@ void input_data(std::vector<Account> data, const int& amount) {	//amount to licz
 	long long int account_nr = 0;
 	std::cout << "Please write your account number to the console" << std::endl;
 	std::cin >> account_nr;
-	while ((client_nr < amount) && (account_nr = !data[client_nr].get_account_nr())) {	//to trzeba przeciazyc
+	while ((client_nr < amount) && (account_nr = !data[client_nr].get_account_nr())) {	
 		client_nr++;
 	}
 	if (client_nr == amount) {
@@ -66,24 +65,49 @@ void input_data(std::vector<Account> data, const int& amount) {	//amount to licz
 }
 
 void menu(std::vector<Account> data, const int& amount) {
-	int choice = 0, client_nr = 0, money = 0;									//ogarnij czy z client nr jest okej
+	int choice = 0, client_nr = 0, money = 0;									
 	input_data(data, amount);
+	while (true) {
 	std::cout << "For checkin your bank balance, press 0, for withdrawing press 1, for logging out, press 2" << std::endl;
 	std::cin >> choice;
+	if (choice == 2) {
+		std::cout << "logging out" << std::endl;
+		break;
+	}
 	switch (choice) {
 	case 0:
 		std::cout << "Your bank balance is " << data[client_nr].get_balance() << "pln" << std::endl;
+		system("pause");
 		break;
 	case 1:
-		std::cout << "How much do you want to withdraw?" << std::endl;		//tu trzeba poprawic, bo przyjmie kazda wartosc
+		std::cout << "How much do you want to withdraw?" << std::endl;		
 		std::cin >> money;
 		data[client_nr].withdraw(money);
-		break;
-	case 2:
-		std::cout << "logging out" << std::endl;
+		std::cout << "Your bank balance is " << data[client_nr].get_balance() << "pln" << std::endl;
+		system("pause");
 		break;
 	default:
 		std::cout << "Wrong input" << std::endl;
+		system("pause");
+		}
 	}
 
 }
+
+bool if_notes(int amount) {		//checks if the amount can be put into NBP notes
+	int temp = 0;
+	int note[6] = { 200, 100, 50, 20, 10, 1};
+	while (amount != 0) {
+		for (int i = 0; i < 6; ++i) {
+			if (amount > note[i]) {
+				temp = static_cast<int>(amount / note[i]);
+				amount -= (note[i] * temp);
+				std::cout << temp << " * " << note[i] << " NBP note" << std::endl;
+			}
+		}
+	}
+	if (amount != 0) {
+	return false;
+	}
+}
+

@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<stdexcept>
 #include "Account.h"
+#include "functions.h"
 
 void Account::set_account_nr(std::string new_account_nr) {
 	long long int temp = 0;
@@ -43,7 +44,14 @@ std::string Account::get_name() {
 	return name;
 }
 void Account::withdraw(int amount) {
-	bank_balance =- amount;
+	if (amount >= 10) {
+		if (if_notes(amount)) {
+			std::cout << "Withdrawal done" << std::endl;
+			bank_balance -= amount;
+		}
+	}
+	else
+		std::cout << "Can't withdraw this amount of money in standard NBP notes" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& stream, Account& a) {
