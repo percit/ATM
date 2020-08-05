@@ -4,8 +4,8 @@
 #include <vector>
 #include"Account.h"
 
-void read_file(const std::string&, std::vector<Account>&);
+int read_file(const std::string&, std::vector<Account>&);	//changed to int and returns number of lines
 std::ostream& operator<<(std::ostream&, std::vector<Account>&);
-void input_data(std::vector<Account>, const int&);
+bool input_data(std::vector<Account>, const int&);
 void menu(std::vector<Account>, const int&);
 bool if_notes(int);

@@ -8,10 +8,8 @@ private:
 	long long int account_nr = 0;
 public:
 	Account() : name("John Smith"),account_nr(1111111111111111), PIN(1111), bank_balance(500) {
-		//std::cout << "constructor" << std::endl;
 	}
 	~Account() {
-		//std::cout << "destructor" << std::endl;
 	};
 	void set_balance(std::string);
 	long int get_balance();
@@ -23,6 +21,4 @@ public:
 	std::string get_name();
 	void withdraw(int);
 	friend std::ostream& operator<<(std::ostream& stream, Account&);
-
-
 };
